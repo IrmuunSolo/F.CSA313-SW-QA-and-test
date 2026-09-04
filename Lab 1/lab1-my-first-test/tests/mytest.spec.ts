@@ -33,7 +33,7 @@ test('Амжилтгүй нэвтрэх - Буруу нууц үг', async ({ pa
   await page.getByRole('button', { name: 'Login' }).click();
 
   // Алдааны мессеж гарч ирж байгааг шалгах
-  await expect(page.locator('[data-test="error"]')).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Epic sadface/ })).toBeVisible();
 });
 
 // 3. Нэвтэрсний дараах үйлдэл: Бараа сагслах
@@ -43,10 +43,14 @@ test('Бараа сагсанд нэмэх', async ({ page }) => {
   await page.getByPlaceholder('Password').fill('secret_sauce');
   await page.getByRole('button', { name: 'Login' }).click();
 
-  // Эхний барааг сагслах товчийг дарах
-  await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
+  // Эхний барааг сагслах товчийг дарах — тухайн бүтээгдэхүүний
+  // картыг нэрээр нь олоод, дотор нь байгаа "Add to cart" товчийг role-оор нь хайна 
+  await page
+    .locator('.inventory_item')
+    .filter({ hasText: 'Sauce Labs Backpack' })
+    .getByRole('button', { name: 'Add to cart' })
+    .click();
 
-  // Сагсны товч дээр бараа орсон эсэхийг бараа орсон тоогоор шалгана:
+  // Сагсны badge (тоо харуулагч) барааны тоогоор шалгах
   await expect(page.locator('.shopping_cart_badge')).toHaveText('1');
 });
-
