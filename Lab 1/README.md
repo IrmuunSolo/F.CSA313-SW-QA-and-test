@@ -10,7 +10,7 @@
 - `https://www.saucedemo.com` демо веб сайт дээр ажиллах 3 бие даасан тестийн скриптийг `tests/mytest.spec.ts` файлд бичсэн.
 - **Тест 1:** Амжилттай нэвтрэх болон залуурчлалыг шалгах (`getByText`, `toHaveURL`).
 - **Тест 2:** Сөрөг тест буюу буруу нууц үгээр нэвтрэх үед алдааны мессеж гарч буйг шалгах (`getByRole`).
-- **Тест 3:** Нэвтэрсний дараах үйлдэл буюу бараа сагслах ажиллагааг шалгах (`getByLabel`).
+- **Тест 3:** Нэвтэрсний дараах үйлдэл буюу бараа сагслах ажиллагааг шалгах (`getByRole`, тухайн барааны context-д scope хийсэн; сагсны badge нь label/`data-test`-гүй тул зөвхөн энэ нэг тохиолдолд CSS class locator ашигласан).
 - Орчин үеийн locator-уудыг ашиглаж, тест бүрийн төгсгөлд Logout хийх зарчмыг мөрдсөн.
 - `npx playwright test` болон `npx playwright show-report` командууд дээр тестийн үр дүнг шалгаж, бичлэг (video) ба Trace тохиргоог идэвхжүүлсэн.
 
@@ -28,3 +28,6 @@
 ```bash
 npm install
 npx playwright install
+npx playwright test
+npx playwright show-report
+```
