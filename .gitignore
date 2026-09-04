@@ -8,11 +8,6 @@ playwright-report/
 blob-report/
 playwright/.cache/
 
-# Таны видео бичлэгүүдийг хадгалсан тусгай хавтас 
-# (Хэрэв та өөр нэртэй хавтас үүсгэсэн бол нэрийг нь сольно уу, жишээ нь: videos/)
-my-videos/
-*.webm
-
 # Environment & Cache
 .env
 .DS_Store
